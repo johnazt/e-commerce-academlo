@@ -84,7 +84,9 @@
 
         </div> -->
         <!-- ================ MAIN ================= -->
-        <main class="main">
+        <main class="main" id="main">
+
+            <!-- ======PRINCIPAL============= -->
 
             <div class="principal container">
                 <div class="principal__img">
@@ -101,13 +103,148 @@
                         <a href="#" class="btn-discover">
                             Discover
                         </a>
-
                         <a class="btn-cart">ADD TO CART</a>
                     </div>
                 </div>
             </div>
 
+            <!-- PRODUCTS -->
+
+            <section class="products" id="products">
+                <div class="products__container container">
+                    <ul class="products__filters">
+                        <li class="products__item products__line">
+                            <h3 class="products__title">
+                                Show All
+                            </h3>
+                            <span class="products__span">
+                                show all products
+                            </span>
+                        </li>
+
+                        <li class="products__item products__line active-product">
+                            <h3 class="products__title">
+                                Hoodies
+                            </h3>
+                            <span class="products__span">
+                                3 products
+                            </span>
+                        </li>
+
+                        <li class="products__item products__line">
+                            <h3 class="products__title">
+                                Shirts
+                            </h3>
+                            <span class="products__span">
+                                4 products
+                            </span>
+                        </li>
+
+                        <li class="products__item">
+                            <h3 class="products__title">
+                                Sweatshirts
+                            </h3>
+                            <span class="products__span">
+                                4 products
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="products__content" id="products__content">
+                        <div class="products__card">
+                            <div class="products__img-container">
+                                <img src="./assets/images/featured1.png" alt="product-item">
+                            </div>
+                            <div class="products__data">
+                                <a href="#" class="products__btn" id="products-btn"><i class='bx bx-plus'></i>
+                                </a>
+                                <div class="products__price">
+                                    $14.00
+                                    <span class="products__stock">Stock: 1</span>
+                                </div>
+                                <h3 class="products__name">
+                                    Hoodies
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="products__card">
+                            <div class="products__img-container">
+                                <img src="./assets/images/featured2.png" alt="product-item">
+                            </div>
+                            <div class="products__data">
+                                <a href="#" class="products__btn" id="products-btn"><i class='bx bx-plus'></i>
+                                </a>
+                                <div class="products__price">
+                                    $24.00
+                                    <span class="products__stock">Stock: 10</span>
+                                </div>
+                                <h3 class="products__name">
+                                    Shirts
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="products__card">
+                            <div class="products__img-container">
+                                <img src="./assets/images/featured3.png" alt="product-item">
+                            </div>
+                            <div class="products__data">
+                                <a href="#" class="products__btn" id="products-btn"><i class='bx bx-plus'></i>
+                                </a>
+                                <div class="products__price">
+                                    $24.00
+                                    <span class="products__stock">Stock: 18</span>
+                                </div>
+                                <h3 class="products__name">
+                                    Sweatshirts
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
+
+        <!-- ======= FOOTER ========= -->
+
+        <footer class="footer">
+            <div class="footer-container container">
+                <div class="footer__info">
+                    <h3 class="footer__subtitle">Our information</h3>
+                    <ul class="footer-list">
+                        <li class="footer-items">Toluca - México</li>
+                    </ul>
+                </div>
+                <div class="footer__info">
+                    <h3 class="footer__subtitle">About Us</h3>
+                    <ul class="footer-list">
+                        <li class="footer-items">Support Center</li>
+                        <li class="footer-items">Customer Support</li>
+                        <li class="footer-items">About Us</li>
+                        <li class="footer-items">Copy Right</li>
+                    </ul>
+                </div>
+                <div class="footer__info">
+                    <h3 class="footer__subtitle">Product</h3>
+                    <ul class="footer-list">
+                        <li class="footer-items">Hoodies</li>
+                        <li class="footer-items">Shirts</li>
+                        <li class="footer-items">Sweatshirts</li>
+                    </ul>
+                </div>
+                <div class="footer__info">
+                    <h3 class="footer__subtitle">Social</h3>
+                    <ul class="footer-list footer-list--icons">
+                        <li class="footer-items"><i class='bx bxl-facebook'></i></li>
+                        <li class="footer-items"><i class='bx bxl-twitter'></i></li>
+                        <li class="footer-items"><i class='bx bxl-instagram'></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <small class="footer__small">© ACADEMLO. All rights reserved</small>
+
+        </footer>
 
     </body>
 </html>

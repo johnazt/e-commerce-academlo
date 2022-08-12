@@ -19,7 +19,9 @@
 	--body-font: "Roboto", sans-serif;
 }
 
-* {
+*,
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -34,6 +36,7 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
 /* ========DARK THEME ============ */
 body.dark-theme {
 	--first-color: hsl(182, 53%, 74%);
@@ -54,6 +57,7 @@ body {
 /* main {
   padding-top: 4rem;
 } */
+
 /* ================= LOADER ==================== */
 .loader {
 	width: 100%;
@@ -91,14 +95,15 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: transparent;
+	background-color: var(--container-color);
 	transition: background-color 0.3s ease;
 }
 .header.scroll-header {
-	background-color: var(--container-color);
+	background-color: transparent;
 	box-shadow: 0 1px 4px hsla(0, 4%, 15%, 0.1);
 	transition: background-color 0.3s ease;
 }
+
 /* ========= NAV ===============*/
 .nav {
 	height: 3.5rem;
@@ -157,6 +162,7 @@ body {
 	align-items: center;
 	column-gap: 1rem;
 }
+
 /* ==============  CARRITO =============== */
 .nav--cart {
 	position: relative;
@@ -194,13 +200,14 @@ body {
 	background-color: var(--container-color);
 	box-shadow: -4px 5px 10px rgb(147, 147, 147);
 }
+
 /* ============= PRINCIPAL ================== */
 .main {
 	overflow: hidden;
 }
 .container {
 	max-width: 1024px;
-	margin: 0 1em;
+	margin: 0 1.5em;
 }
 .principal {
 	display: grid;
@@ -213,7 +220,7 @@ body {
 	align-items: flex-end;
 	justify-self: flex-end;
 	padding-bottom: 2em;
-	transform: translateX(1rem);
+	transform: translateX(1.5rem);
 	z-index: -1;
 }
 .principal__info {
@@ -264,4 +271,137 @@ body {
 .btn-cart:hover {
 	background-color: var(--first-color);
 	transition: background-color 0.3s ease;
+}
+
+/* ============ PRODUCTS =============== */
+
+.products {
+	padding: 5em 0 7em 0;
+}
+.products__filters {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 1.5rem;
+	margin-bottom: 4rem;
+}
+.products__item {
+	list-style: none;
+	color: var(--text-color);
+	position: relative;
+}
+.products__line::before {
+	position: absolute;
+	content: "";
+	width: 1px;
+	height: 40px;
+	background-color: var(--text-color-light);
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+}
+.products__title {
+	font-size: 16px;
+	font-weight: 500;
+}
+.products__span {
+	font-size: 13px;
+}
+.active-product .products__title {
+	color: var(--title-color);
+}
+/* CARD PRODUCTS */
+.products__content {
+	display: grid;
+	grid-template-columns: 200px;
+	justify-content: center;
+	row-gap: 2em;
+}
+.products__card {
+	border-radius: 7px;
+	background-color: var(--container-color);
+}
+.products__img-container {
+	text-align: center;
+	padding: 0.5em 1em;
+	border-radius: 7px 7px 0 0;
+	background-color: var(--card-color);
+}
+.products__data {
+	max-width: 200px;
+	position: relative;
+	padding: 1em;
+}
+.products__btn {
+	display: inline-flex;
+	position: absolute;
+	right: 1rem;
+	top: -1.35rem;
+	padding: 0.6rem;
+	border-radius: 50%;
+	color: var(--title-color);
+	background-color: #fff;
+	box-shadow: 0 5px 10px hsla(214, 4%, 4%, 0.4);
+}
+.products__price {
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+	font-weight: 500;
+	padding-right: 1em;
+	gap: 0.5em;
+}
+.products__stock {
+	padding-left: 0.5em;
+	font-size: 0.9rem;
+	font-weight: 400;
+	border-left: 1px solid var(--text-color);
+}
+.products__name {
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+/* =============== FOOTER ================ */
+.footer {
+	padding: 7em 0 2em 0;
+	background-color: var(--card-color);
+}
+.footer-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5em;
+	padding-bottom: 3em;
+	border-bottom: 1px solid var(--container-color);
+}
+.footer__info {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+.footer-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7em;
+	list-style-type: none;
+}
+.footer-list--icons {
+	flex-direction: row;
+	gap: 0.7em;
+}
+.footer__subtitle {
+	font-size: 20px;
+}
+.footer-items {
+	font-size: 15px;
+	cursor: pointer;
+}
+.footer__small {
+	display: block;
+	margin-top: 6em;
+	text-align: center;
+	color: var(--text-color);
 }
