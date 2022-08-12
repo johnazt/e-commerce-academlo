@@ -279,7 +279,6 @@ body {
 	padding: 5em 0 7em 0;
 }
 .products__filters {
-	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
 	align-items: center;
@@ -315,7 +314,6 @@ body {
 }
 /* CARD PRODUCTS */
 .products__content {
-	display: grid;
 	grid-template-columns: 200px;
 	justify-content: center;
 	row-gap: 2em;
@@ -331,20 +329,8 @@ body {
 	background-color: var(--card-color);
 }
 .products__data {
-	max-width: 200px;
 	position: relative;
 	padding: 1em;
-}
-.products__btn {
-	display: inline-flex;
-	position: absolute;
-	right: 1rem;
-	top: -1.35rem;
-	padding: 0.6rem;
-	border-radius: 50%;
-	color: var(--title-color);
-	background-color: #fff;
-	box-shadow: 0 5px 10px hsla(214, 4%, 4%, 0.4);
 }
 .products__price {
 	display: flex;
@@ -363,6 +349,17 @@ body {
 .products__name {
 	font-size: 1rem;
 	font-weight: 500;
+}
+.products__btn {  /* Button is over the nav */
+	display: inline-flex;
+	position: absolute;
+	right: 1rem;
+	top: -1.35rem;
+	padding: 0.6rem;
+	border-radius: 50%;
+	color: var(--button-color);
+	background-color: #fff;
+	box-shadow: 0 5px 10px hsla(214, 4%, 4%, 0.4);
 }
 
 /* =============== FOOTER ================ */
@@ -405,3 +402,7 @@ body {
 	text-align: center;
 	color: var(--text-color);
 }
+
+.grid {
+	display: grid;
+  }

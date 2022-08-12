@@ -23,15 +23,15 @@ themeButton.addEventListener("click", () => {
 });
 
 // ==============  CARRITO =============== //
-// const cartOpen = document.getElementById("cart-shop");
-// const cartClose = document.getElementById("close-cart");
-// const cartContainer = document.getElementById("cart-container");
-// cartOpen.addEventListener("click", () => {
-// 	cartContainer.classList.remove("hide");
-// });
-// cartClose.addEventListener("click", () => {
-// 	cartContainer.classList.add("hide");
-// });
+const cartOpen = document.getElementById("cart-shop");
+const cartClose = document.getElementById("close-cart");
+const cartContainer = document.getElementById("cart-container");
+cartOpen.addEventListener("click", () => {
+	cartContainer.classList.remove("hide");
+});
+cartClose.addEventListener("click", () => {
+	cartContainer.classList.add("hide");
+});
 
 // ============= SCROLL ====================// 
 const header = document.getElementById("header")
