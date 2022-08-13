@@ -9,6 +9,7 @@
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
         <link rel="stylesheet" href="./assets/css/style.css">
+        <script src="./assets/js/data/db.js" defer></script>
         <script src="./assets/js/main.js" defer></script>
     </head>
     <body>
@@ -43,6 +44,8 @@
                     Store
                 </a>
 
+
+                <!-- menu hamburguesa -->
                 <div class="nav--menu">
                     <ul class="nav--list">
                         <li class="nav--item">
@@ -75,8 +78,10 @@
         </header>
 
         <!-- Extern cart -->
-        <div class="cart--container" id="cart-container">
+        <div class="cart--container hide" id="cart-container">
             <div class="cart" id="cart">
+                <h2>My Cart</h2>
+
                 <div class="nav--close" id="close-cart">
                     <i class='bx bx-x'></i>
                 </div>
@@ -156,8 +161,8 @@
                                 <img src="./assets/images/featured1.png" alt="product-item">
                             </div>
                             <div class="products__data">
-                                <a href="#" class="products__btn" id="products-btn"><i class='bx bx-plus'></i>
-                                </a>
+                                <button  class="products__btn" id="1"><i class='bx bx-plus'></i>
+                                </button>
                                 <div class="products__price">
                                     $14.00
                                     <span class="products__stock">Stock: 1</span>
@@ -172,8 +177,8 @@
                                 <img src="./assets/images/featured2.png" alt="product-item">
                             </div>
                             <div class="products__data">
-                                <a href="#" class="products__btn" id="products-btn"><i class='bx bx-plus'></i>
-                                </a>
+                                <button  class="products__btn" id="2"><i class='bx bx-plus'></i>
+                                </button>
                                 <div class="products__price">
                                     $24.00
                                     <span class="products__stock">Stock: 10</span>
@@ -188,8 +193,8 @@
                                 <img src="./assets/images/featured3.png" alt="product-item">
                             </div>
                             <div class="products__data">
-                                <a href="#" class="products__btn" id="products-btn"><i class='bx bx-plus'></i>
-                                </a>
+                                <button class="products__btn" id="3"><i class='bx bx-plus'></i>
+                                </button>
                                 <div class="products__price">
                                     $24.00
                                     <span class="products__stock">Stock: 18</span>
