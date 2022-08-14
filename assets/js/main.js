@@ -67,8 +67,8 @@ function cartFunctionality() {
 	const cartObj = {};
 	btnProducts.forEach((btn) => {
 		btn.addEventListener("click", (e) => {
-			const id = parseInt(e.target.parentElement.id);
-			const selectProduct = items.find((item) => item.id === id);
+			const id = parseInt(e.target.id); // Se removio parentElement antes de id
+			const selectProduct = items.find((item) => item.id === id); 
 			cartList.push(selectProduct);
 			
 			// devuelve cantidad y precio de elementos============

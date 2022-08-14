@@ -350,7 +350,7 @@ body {
 	font-size: 1rem;
 	font-weight: 500;
 }
-.products__btn {  /* Button is over the nav */
+.products__btn {  
 	display: inline-flex;
 	position: absolute;
 	right: 1rem;
@@ -362,6 +362,9 @@ body {
 	background-color: #fff;
 	box-shadow: 0 5px 10px hsla(214, 4%, 4%, 0.4);
 	cursor: pointer;
+}
+.bx-plus {
+	pointer-events: none; /* prevent the listener in this element*/
 }
 
 /* =============== FOOTER ================ */
