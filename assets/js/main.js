@@ -4,11 +4,15 @@ const loader = document.getElementById("loader");
 
 document.addEventListener("DOMContentLoaded", () => {
 	load();
+	scrollHeader();
+	createFilterProducts();
+	createProductElements();
+	filterProducts();
 });
 function load() {
 	setTimeout(() => {
 		loader.classList.add("hide");
-	}, 500);
+	}, 2000);
 }
 
 //=============== DARK MODE ================= //
@@ -63,7 +67,7 @@ function scrollHeader() {
 		}
 	});
 }
-scrollHeader();
+
 
 /* ======================== SHOPPING CART ======================= */
 //SELECT PRODUCTS
@@ -79,7 +83,7 @@ const productsFilter = document.querySelector(".products__filters");
 function createFilterProducts() {
 	productsFilter.innerHTML = `
 		
-			<li class="products__item products__line" onclick="filterAll()">
+		<li class="products__item products__line " id="all">
 			<h3 class="products__title">
 				Show All
 			</h3>
@@ -88,8 +92,7 @@ function createFilterProducts() {
 			</span>
 		</li>
 	
-		<li class="products__item products__line active-product"
-		onclick="filterHoodies()">
+		<li class="products__item products__line active-product " id="hoodies">
 			<h3 class="products__title">
 				Hoodies
 			</h3>
@@ -98,7 +101,7 @@ function createFilterProducts() {
 			</span>
 		</li>
 	
-		<li class="products__item products__line" onclick="filterShirts()">
+		<li class="products__item products__line " id="shirts">
 			<h3 class="products__title">
 				Shirts
 			</h3>
@@ -107,7 +110,7 @@ function createFilterProducts() {
 			</span>
 		</li>
 	
-		<li class="products__item" onclick="filterSweatshirts()">
+		<li class="products__item " id="sweatshirts" >
 			<h3 class="products__title">
 				Sweatshirts
 			</h3>
@@ -116,64 +119,78 @@ function createFilterProducts() {
 			</span>
 		</li>
 			`;
-}
-createFilterProducts();
-
-function filterHoodies(e) {
-	console.log(e);
-	items.forEach(item => {
-		if (item.category === e) {
-			containerProducts.innerHTML = `
-	
-			<div class="products__card">
-				<div class="products__img-container">
-						<img src="${item.image}" alt="product-item">
-				</div>
-				<div class="products__data">
-					<button class="products__btn" onclick="addToCart(${item.id})"><i class='bx bx-plus'></i>
-					</button>
-					<div class="products__price">
-							$${item.price}.00
-					<span class="products__stock">Stock: ${item.quantity}</span>
-					</div>
-					<h3 class="products__name">
-							${item.name}
-					</h3>
-				</div>
-			</div>
-		`;
-		}
-	});
+			
 }
 
 // CREATE ELEMENTS PRODUCTS
+
 function createProductElements() {
 	items.forEach(item => {
 		containerProducts.innerHTML += `
-	
-			<div class="products__card">
-				<div class="products__img-container">
-						<img src="${item.image}" alt="product-item">
-				</div>
-				<div class="products__data">
-					<button class="products__btn" onclick="addToCart(${item.id})"><i class='bx bx-plus'></i>
-					</button>
-					<div class="products__price">
-							$${item.price}.00
-					<span class="products__stock">Stock: ${item.quantity}</span>
-					</div>
-					<h3 class="products__name">
-							${item.name}
-					</h3>
-				</div>
-			</div>
+		
+		<div class="products__card">
+		<div class="products__img-container">
+		<img src="${item.image}" alt="product-item">
+		</div>
+		<div class="products__data">
+		<button class="products__btn" onclick="addToCart(${item.id})"><i class='bx bx-plus'></i>
+		</button>
+		<div class="products__price">
+		$${item.price}.00
+		<span class="products__stock">Stock: ${item.quantity}</span>
+		</div>
+		<h3 class="products__name">
+		${item.name}
+		</h3>
+		</div>
+		</div>
 		`;
 	});
 }
-createProductElements();
 
-// CREATE ARRAY TO STORE OBJECTS
-let cart = [];
+// CREATE ARRAY TO STORE OBJECTS and GET localStorage Array
+let cart = JSON.parse(localStorage.getItem("CART")) || [];
+updateCart();
+
+// FILTER ELEMENTS
+function filterProducts() {
+	const btnsFilter = document.querySelectorAll(".products__item");
+	btnsFilter.forEach(btn => {
+		btn.addEventListener("click", e => {
+			const btnID = e.target.offsetParent.id;
+
+			containerProducts.innerHTML = "";
+	
+			items.forEach(item => {
+				if (item.category === btnID) {
+					
+					containerProducts.innerHTML = `
+					
+					<div class="products__card">
+					<div class="products__img-container">
+					<img src="${item.image}" alt="product-item">
+					</div>
+					<div class="products__data">
+					<button class="products__btn" onclick="addToCart(${item.id})"><i class='bx bx-plus'></i>
+					</button>
+					<div class="products__price">
+					$${item.price}.00
+					<span class="products__stock">Stock: ${item.quantity}</span>
+					</div>
+					<h3 class="products__name">
+					${item.name}
+					</h3>
+					</div>
+					</div>
+					`;
+				} else if (btnID === "all"){
+					containerProducts.innerHTML = "";
+					createProductElements()
+				}
+			});
+		});
+	});
+}
 
 // ADD OBJECTS TO ARRAY AVOID REPETITION
 function addToCart(id) {
@@ -191,15 +208,27 @@ function addToCart(id) {
 	updateCart();
 }
 
-// ACTUALIZAMOS LO QUE SE MUESTRA EN EL CARRO
+// UPDATE THE CART ARRAY
 function updateCart() {
 	renderCartItems();
 	renderSubtotal();
+	// ADD CART TO LOCAL STORAGE
+	localStorage.setItem("CART", JSON.stringify(cart));
 }
 
-// MOSTRAMOS CADA UNO DE LOS ELEMENTOS EN EL CARRO
+// SHOW IN THE CONTAINER EACH ELEMELENT
 function renderCartItems() {
 	cartProduct.innerHTML = "";
+
+	if (cart.length === 0) {
+		cartProduct.innerHTML = `
+		<div class="container-empty">
+		<img src="./assets/images/empty-cart.png" alt="imagen-empty">
+		<h2>Your Cart is empty</h2>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum facilis ullam eius vel dicta nobis?</p>
+		</div>
+		`;
+	}
 
 	cart.forEach(item => {
 		cartProduct.innerHTML += `
@@ -222,7 +251,7 @@ function renderCartItems() {
 		<button class="cart-btns__btn" onclick="changeNumberUnit('plus', ${
 			item.id
 		})" >+</button>
-		<button class="btn-delete" onclick="removeElements(${item.id})" >Del</button>
+		<button class="btn-delete" onclick="removeElements(${item.id})" ><i class="bx bx-trash-alt cart__amount-trash" data-id="3"></i></button>
 		</div>
 		</div>
 		</div>
@@ -231,27 +260,23 @@ function renderCartItems() {
 	});
 }
 
-// Elimina elementos del carro de compras
+// REMOVE ELEMENTS FROM SHOP CART
 function removeElements(id) {
 	cart = cart.filter(item => item.id !== id);
 	updateCart();
 }
 
-// Cambia el numero de unidades que se muestran
+// CHANGE NUMBER OF UNITS OF PRODUCTS
 function changeNumberUnit(action, id) {
 	cart = cart.map(item => {
 		numberOfUnits = item.numberOfUnits;
 		if (item.id === id) {
 			if (action === "plus" && numberOfUnits < item.quantity) {
 				numberOfUnits++;
-				// item.stock--;
-				// if ( numberOfUnits > item.stock) {
-				// 	alert("no units")
-				// }
-				// console.log(numberOfUnits)
+
 			} else if (action === "minus" && numberOfUnits > 0) {
 				numberOfUnits--;
-				// item.stock++;
+
 			}
 		}
 
@@ -263,7 +288,7 @@ function changeNumberUnit(action, id) {
 	updateCart();
 }
 
-// Calcula el subtotal y numero total de items
+// RETURN SUBTOTAL AND TOTAL ITEMS
 function renderSubtotal() {
 	let totalPrice = 0;
 	let totalItems = 0;
