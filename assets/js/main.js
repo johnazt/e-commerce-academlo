@@ -5,10 +5,7 @@ const loader = document.getElementById("loader");
 document.addEventListener("DOMContentLoaded", () => {
 	load();
 	scrollHeader();
-	createFilterProducts();
-	createProductElements();
-	filterProducts();
-	darkMode();
+	darkMode()
 });
 function load() {
 	setTimeout(() => {
@@ -137,7 +134,7 @@ function createFilterProducts() {
 			`;
 			
 }
-
+createFilterProducts()
 // CREATE ELEMENTS PRODUCTS
 
 function createProductElements() {
@@ -163,7 +160,7 @@ function createProductElements() {
 		`;
 	});
 }
-
+createProductElements()
 // CREATE ARRAY TO STORE OBJECTS and GET localStorage Array
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
 updateCart();
