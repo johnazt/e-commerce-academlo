@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	createFilterProducts();
 	createProductElements();
 	filterProducts();
+	darkMode();
 });
 function load() {
 	setTimeout(() => {
@@ -17,16 +18,31 @@ function load() {
 
 //=============== DARK MODE ================= //
 
-const themeButton = document.getElementById("theme-button");
-
-themeButton.addEventListener("click", () => {
-	document.body.classList.toggle("dark-theme");
-	if (themeButton.classList.contains("bx-moon")) {
+function darkMode() {
+	const themeButton = document.getElementById("theme-button");
+	themeButton.addEventListener("click", () => {
+	  document.body.classList.toggle("dark-theme");
+	  if (themeButton.classList.contains("bx-moon")) {
 		themeButton.classList.replace("bx-moon", "bx-sun");
-	} else {
+	  } else {
 		themeButton.classList.replace("bx-sun", "bx-moon");
+	  }
+	  if (document.body.classList.contains("dark-theme")) {
+		localStorage.setItem("dark-mode", "true");
+	  } else {
+		localStorage.setItem("dark-mode", "false");
+	  }
+	});
+	if (localStorage.getItem("dark-mode") === "true") {
+	  document.body.classList.add("dark-theme");
+	  themeButton.classList.add("bx-sun");
+	  themeButton.classList.remove("bx-moon");
+	} else {
+	  document.body.classList.remove("dark-theme");
+	  themeButton.classList.add("bx-moon");
+	  themeButton.classList.remove("bx-sun");
 	}
-});
+  }
 
 // ==============  RESPONSIVE MENU SHOP CART =============== //
 
