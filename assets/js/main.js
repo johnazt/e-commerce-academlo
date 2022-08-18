@@ -204,6 +204,7 @@ function filterProducts() {
 		});
 	});
 }
+filterProducts()
 
 // ADD OBJECTS TO ARRAY AVOID REPETITION
 function addToCart(id) {
