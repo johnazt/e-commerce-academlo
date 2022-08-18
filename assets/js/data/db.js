@@ -19,7 +19,7 @@ const items = [
 		id: 3,
 		name: "Sweatshirts",
 		price: 24.0,
-		image: "assets/images/featured3.png",
+		image: "./assets/images/featured3.png",
 		category: "sweatshirts",
 		quantity: 20,
 	},
